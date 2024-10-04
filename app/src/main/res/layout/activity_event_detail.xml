@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <!-- Define variables for data binding -->
+        <variable
+            name="event"
+            type="com.callcenter.dicodingevent.Event" />
+        <variable
+            name="viewModel"
+            type="com.callcenter.dicodingevent.EventViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Toolbar with Back Button -->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            android:elevation="4dp"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:titleTextColor="@android:color/white"
+            tools:context=".EventDetailActivity" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:background="@color/backgroundColor">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Event Image -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="12dp"
+                    app:cardBackgroundColor="@android:color/white"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="8dp">
+
+                    <ImageView
+                        android:id="@+id/eventImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scaleType="centerCrop"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/default_featured_image_png"
+                        tools:src="@drawable/default_featured_image_png"/>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Error View Message -->
+                <TextView
+                    android:id="@+id/noInternetText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No internet connection"
+                    android:visibility="gone"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:gravity="center"
+                    android:layout_gravity="center" />
+
+                <!-- Add this ProgressBar to your layout -->
+                <ProgressBar
+                    android:id="@+id/loading_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" />
+
+                <!-- Event Title -->
+                <TextView
+                    android:id="@+id/eventTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/primaryTextColor"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/akaya_telivigala" />
+
+                <!-- Event Begin Time -->
+                <TextView
+                    android:id="@+id/eventBeginTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="@color/primaryTextColor"
+                    android:layout_marginBottom="8dp"
+                    android:padding="12dp"
+                    android:background="@drawable/rounded_background_time"
+                    android:layout_marginTop="4dp"
+                    android:drawableStart="@drawable/ic_clock"
+                    android:fontFamily="@font/albert_sans_medium"
+                    android:drawablePadding="8dp"/>
+
+                <!-- Event End Time -->
+                <TextView
+                    android:id="@+id/eventEndTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="@color/primaryTextColor"
+                    android:layout_marginBottom="8dp"
+                    android:padding="12dp"
+                    android:background="@drawable/rounded_background_time"
+                    android:layout_marginTop="4dp"
+                    android:drawableStart="@drawable/ic_clock"
+                    android:fontFamily="@font/albert_sans_medium"
+                    android:drawablePadding="8dp"/>
+
+                <!-- Event Description -->
+                <TextView
+                    android:id="@+id/eventDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="@color/primaryTextColor"
+                    android:layout_marginBottom="16dp"
+                    android:fontFamily="@font/akaya_telivigala" />
+
+                <!-- Sisa Kuota -->
+                <TextView
+                    android:id="@+id/eventRemainingQuota"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="@color/secondaryTextColor"
+                    android:layout_marginBottom="4dp"
+                    android:padding="12dp"
+                    android:background="@drawable/rounded_background"
+                    android:layout_marginTop="2dp"
+                    android:drawableStart="@drawable/ic_quota"
+                    android:drawablePadding="8dp"/>
+
+<!--                &lt;!&ndash; Event Quota &ndash;&gt;-->
+<!--                <TextView-->
+<!--                    android:id="@+id/eventQuota"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:textSize="16sp"-->
+<!--                    android:textColor="@color/secondaryTextColor"-->
+<!--                    android:layout_marginBottom="4dp"-->
+<!--                    android:padding="12dp"-->
+<!--                    android:background="@drawable/rounded_background"-->
+<!--                    android:layout_marginTop="2dp"-->
+<!--                    android:drawableStart="@drawable/ic_quota"-->
+<!--                    android:drawablePadding="8dp"/>-->
+
+<!--                &lt;!&ndash; Event Registrants &ndash;&gt;-->
+<!--                <TextView-->
+<!--                    android:id="@+id/eventRegistrants"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:textSize="16sp"-->
+<!--                    android:textColor="@color/secondaryTextColor"-->
+<!--                    android:layout_marginBottom="4dp"-->
+<!--                    android:padding="12dp"-->
+<!--                    android:background="@drawable/rounded_background"-->
+<!--                    android:layout_marginTop="2dp"-->
+<!--                    android:drawableStart="@drawable/ic_people"-->
+<!--                    android:fontFamily="@font/albert_sans_medium"-->
+<!--                    android:drawablePadding="8dp"/>-->
+
+                <!-- Event City -->
+                <TextView
+                    android:id="@+id/eventCityName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="@color/secondaryTextColor"
+                    android:layout_marginBottom="4dp"
+                    android:padding="12dp"
+                    android:background="@drawable/rounded_background"
+                    android:layout_marginTop="2dp"
+                    android:drawableStart="@drawable/ic_location"
+                    android:fontFamily="@font/albert_sans_medium"
+                    android:drawablePadding="8dp"/>
+
+                <!-- Event Owner -->
+                <TextView
+                    android:id="@+id/eventOwnerName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="@color/secondaryTextColor"
+                    android:layout_marginBottom="4dp"
+                    android:padding="12dp"
+                    android:background="@drawable/rounded_background"
+                    android:layout_marginTop="2dp"
+                    android:drawableStart="@drawable/ic_organizer"
+                    android:fontFamily="@font/albert_sans_medium"
+                    android:drawablePadding="8dp"/>
+
+                <!-- Event Category -->
+                <TextView
+                    android:id="@+id/eventCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="@color/secondaryTextColor"
+                    android:layout_marginBottom="12dp"
+                    android:padding="12dp"
+                    android:background="@drawable/rounded_background"
+                    android:layout_marginTop="2dp"
+                    android:drawableStart="@drawable/ic_category"
+                    android:fontFamily="@font/albert_sans_medium"
+                    android:drawablePadding="8dp"/>
+
+                <!-- Kuota Habis -->
+                <TextView
+                    android:id="@+id/kuotaHabisText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/kuota_habis"
+                    android:textColor="@color/errorColor"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:visibility="gone"/>
+
+                <!-- Register Button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/registerButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Daftar"
+                    android:textColor="@android:color/white"
+                    android:backgroundTint="@color/colorAccent"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="16dp"
+                    app:cornerRadius="24dp"
+                    app:icon="@drawable/ic_register"
+                    android:fontFamily="@font/akaya_telivigala"
+                    android:onClick="@{() -> viewModel.register(event.link)}" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

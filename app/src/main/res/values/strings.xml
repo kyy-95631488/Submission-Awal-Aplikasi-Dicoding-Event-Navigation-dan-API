@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Dicoding Event</string>
+
+    <string name="event_begin_time">Mulai: %1$s</string>
+    <string name="event_end_time">Selesai: %1$s</string>
+    <string name="event_quota">Quota: %1$d</string>
+    <string name="event_registrants">Terdaftar: %1$d</string>
+    <string name="event_remaining_quota">Sisa Kuota: %1$d</string>
+    <string name="event_city_name">Lokasi: %1$s</string>
+    <string name="event_owner_name">Penyelenggara: %1$s</string>
+    <string name="event_category">Jenis Event: %1$s</string>
+
+    <string name="kuota_habis">Kuota Habis</string>
+
+    <string name="event_closed">Event Ditutup</string>
+
+    <string name="no_internet_message">Tidak ada koneksi internet. Silakan periksa koneksi Anda dan coba lagi.</string>
+</resources>
